@@ -10,12 +10,17 @@
     <packaging>pom</packaging>
 
     <properties>
+        <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <java.version>11</java.version>
+        <maven.checkstyle.vesion>3.1.2</maven.checkstyle.vesion>
 
         <spring.cloud.version>2021.0.3</spring.cloud.version>
         <spring.boot.version>2.7.0</spring.boot.version>
+
+        <jackson.version>2.13.3</jackson.version>
+        <springfox.version>3.0.0</springfox.version>
+        <swagger.ui.version>3.0.0</swagger.ui.version>
     </properties>
 
     <modules>
@@ -39,6 +44,37 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- Swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.ui.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.vesion}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
